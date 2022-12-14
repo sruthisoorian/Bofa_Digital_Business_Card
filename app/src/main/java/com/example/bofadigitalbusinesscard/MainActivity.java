@@ -1,7 +1,10 @@
 package com.example.bofadigitalbusinesscard;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
+import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -19,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
     TextView jobTag, nameTag, companyTag, cellTag, emailTag, cardDecal;
 
     String name, company, job, cell, email;
-
+    String bgColor;
+    ConstraintLayout constraintBackground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         bofaLogo = findViewById(R.id.bofaLogo);
         cardDecal = findViewById(R.id.decal);
 
+        constraintBackground = findViewById(R.id.containerBackground);
+
         //Declare string values
         if (STARTUP == true){
             name = "Sruthi Soorian";
@@ -45,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
             company = "GBT-GCIB AND SALES TECHNOLOGY";
             cell = "555-123-4567";
             email = "sruthi.soorian@bofa.com";
+            bgColor = "blue";
+            setBgColor();
             ranOnce();
         }
         else{
@@ -54,6 +62,17 @@ public class MainActivity extends AppCompatActivity {
             company = intent.getExtras().getString("company");
             cell = intent.getExtras().getString("cell");
             email = intent.getExtras().getString("email");
+            bgColor = intent.getExtras().getString("bgColor");
+
+            if(bgColor == "grey"){
+                constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_default));
+            }
+            else if(bgColor =="pink"){
+                constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_pink));
+            }
+            else if(bgColor == "blue"){
+                constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_blue));
+            }
 
         }
 
@@ -80,6 +99,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void setBgColor(){
+        if(bgColor == "grey"){
+            constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_default));
+        }
+        else if(bgColor =="pink"){
+            constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_pink));
+        }
+        else if(bgColor == "blue"){
+            constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_blue));
+        }
+
+    }
+
     public void openSettingsPage(){
         Intent intent = new Intent(this, SettingsActivity.class);
         intent.putExtra("name", name);
@@ -87,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("company", company);
         intent.putExtra("cell", cell);
         intent.putExtra("email", email);
+        intent.putExtra("bgColor", bgColor);
         startActivity(intent);
     }
 

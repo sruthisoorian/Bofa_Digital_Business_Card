@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="card_bg_default">#d3d3d3</color>
+    <color name="card_bg_blue">#AEE1FD</color>
+    <color name="card_bg_pink">#FABCD2</color>
     <color name="bofa_blue">#0065b3</color>
     <color name="bofa_red">#e61030</color>
     <color name="bofa_darkBlue">#063585</color>

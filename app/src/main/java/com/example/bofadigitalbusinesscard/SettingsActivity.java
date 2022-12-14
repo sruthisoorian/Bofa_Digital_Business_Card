@@ -20,6 +20,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     String name, company, job, cell, email;
 
+    String bgColor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
         company = intent.getExtras().getString("company");
         cell = intent.getExtras().getString("cell");
         email = intent.getExtras().getString("email");
+        bgColor = intent.getExtras().getString("bgColor");
 
         editName.setText(name);
         editPosition.setText(job);
@@ -53,11 +56,14 @@ public class SettingsActivity extends AppCompatActivity {
         spinnerArray.add("Business Blue");
         spinnerArray.add("Profit Pink");
 
+
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         editTheme.setAdapter(adapter);
+
 
 
 
@@ -70,10 +76,6 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l){
-        String choice = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(getApplicationContext(), choice, Toast.LENGTH_LONG).show();
-    }
 
     public void closeSettingsPage(){
         Intent intent = new Intent(this, MainActivity.class);
@@ -82,7 +84,23 @@ public class SettingsActivity extends AppCompatActivity {
         intent.putExtra("company", editCompany.getText().toString());
         intent.putExtra("cell", editPhone.getText().toString());
         intent.putExtra("email", editEmail.getText().toString());
+        retrieveBG();
+        intent.putExtra("bgColor", bgColor);
         startActivity(intent);
+    }
+
+    public void retrieveBG(){
+        String selected = editTheme.getSelectedItem().toString();
+
+        if(selected.equals("Default Grey")){
+            bgColor = "grey";
+        }
+        else if(selected.equals("Business Blue")){
+            bgColor = "blue";
+        }
+        else if(selected.equals("Profit Pink")){
+            bgColor = "pink";
+        }
     }
 
 
