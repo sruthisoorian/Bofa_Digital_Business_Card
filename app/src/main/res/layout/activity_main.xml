@@ -27,6 +27,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="11dp"
+        android:src="@drawable/sample_qr_code"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +125,7 @@
         app:srcCompat="@drawable/bofa_logo_cropped" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/decal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="================================="
