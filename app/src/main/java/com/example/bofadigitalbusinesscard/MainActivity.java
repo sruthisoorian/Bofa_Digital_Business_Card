@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             company = "GBT-GCIB AND SALES TECHNOLOGY";
             cell = "555-123-4567";
             email = "sruthi.soorian@bofa.com";
-            bgColor = "blue";
+            bgColor = "grey";
             setBgColor();
             ranOnce();
         }
@@ -63,16 +63,18 @@ public class MainActivity extends AppCompatActivity {
             cell = intent.getExtras().getString("cell");
             email = intent.getExtras().getString("email");
             bgColor = intent.getExtras().getString("bgColor");
+            setBgColor();
 
-            if(bgColor == "grey"){
-                constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_default));
-            }
-            else if(bgColor =="pink"){
-                constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_pink));
-            }
-            else if(bgColor == "blue"){
-                constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_blue));
-            }
+//            bgColor = "blue";
+//            if(bgColor.equals("grey")){
+//                constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_default));
+//            }
+//            else if(bgColor =="pink"){
+//                constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_pink));
+//            }
+//            else if(bgColor.equals("blue")){
+//                constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_blue));
+//            }
 
         }
 
@@ -100,13 +102,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setBgColor(){
-        if(bgColor == "grey"){
+        if(bgColor.equals("grey")){
             constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_default));
         }
-        else if(bgColor =="pink"){
+        else if(bgColor.equals("pink")){
             constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_pink));
         }
-        else if(bgColor == "blue"){
+        else if(bgColor.equals("blue")){
             constraintBackground.setBackgroundColor(getResources().getColor(R.color.card_bg_blue));
         }
 

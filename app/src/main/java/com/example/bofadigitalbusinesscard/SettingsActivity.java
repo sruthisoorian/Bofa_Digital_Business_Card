@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.content.Intent;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 
@@ -54,7 +55,6 @@ public class SettingsActivity extends AppCompatActivity {
         //Populate Spinner
         spinnerArray.add("Default Grey");
         spinnerArray.add("Business Blue");
-        spinnerArray.add("Profit Pink");
 
 
 
@@ -85,7 +85,8 @@ public class SettingsActivity extends AppCompatActivity {
         intent.putExtra("cell", editPhone.getText().toString());
         intent.putExtra("email", editEmail.getText().toString());
         retrieveBG();
-        intent.putExtra("bgColor", bgColor);
+//        intent.putExtra("bgColor", bgColor);
+        intent.putExtra("bgColor", getColor());
         startActivity(intent);
     }
 
@@ -101,6 +102,22 @@ public class SettingsActivity extends AppCompatActivity {
         else if(selected.equals("Profit Pink")){
             bgColor = "pink";
         }
+    }
+
+    public String getColor(){
+        String selected = editTheme.getSelectedItem().toString();
+        String returned = null;
+
+        if(selected.equals("Default Grey")){
+            returned = "grey";
+        }
+        else if(selected.equals("Business Blue")){
+            returned = "blue";
+        }
+        else if(selected.equals("Profit Pink")){
+            returned = "pink";
+        }
+        return returned;
     }
 
 
